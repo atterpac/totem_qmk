@@ -250,12 +250,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case OS_SWAP:
             if (record->event.pressed) {
-                if (!keymap_config.swap_lctl_lgui) {
-                  keymap_config.swap_lctl_lgui = true;  // ─── MAC
-                }
-                else {
-                  keymap_config.swap_lctl_lgui = false; // ─── WIN
-                }
+            keymap_config.swap_lctl_lgui = !keymap_config.swap_lctl_lgui;
             eeconfig_update_keymap(keymap_config.raw);
             clear_keyboard();  // ──── clear to prevent stuck keys
             return false;
